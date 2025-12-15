@@ -33,6 +33,20 @@ This component lets the admin pick a global identity display mode and (optionall
 - **White theme compatible**
   - Updates both `$user->fullname` and `$user->first_name` at runtime.
 
+## Screenshots
+
+### Component overview
+![Component overview](screenshots/01-component-info.png)
+
+### Components menu
+![Components menu](screenshots/02-components-menu.png)
+
+### Admin configuration
+![Admin configuration](screenshots/03-admin-settings.png)
+
+### User identity settings
+![User identity settings](screenshots/04-user-settings.png)
+
 ## Installation
 
 1. Copy the component folder into:
