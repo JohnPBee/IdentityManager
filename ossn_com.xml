@@ -2,11 +2,15 @@
 <component xmlns="http://www.opensource-socialnetwork.org/v/3.0">
     <name>Identity Manager</name>
     <id>IdentityManager</id>
-    <author>JB</author>
-    <description>Identity display policy, per-context controls, and optional user titles for OSSN. Not affiliated with OSSN.</description>
+    <author>JohnBee</author>
+    <description>
+        Per-user identity display overrides for OSSN.
+        Allows admins to set a global display mode and users to optionally override
+        how their name appears across feeds, comments, profiles, and user lists.
+    </description>
     <license>MIT</license>
-    <author_url>https://dev.gaggo.net</author_url>
-    <version>1.1</version>
+    <author_url>https://github.com/JohnPBee/IdentityManager</author_url>
+    <version>1.0.1</version>
     <requires>
         <type>ossn_version</type>
         <version>8.9</version>
