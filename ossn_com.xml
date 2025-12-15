@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component xmlns="http://www.opensource-socialnetwork.org/v/3.0">
+    <name>Identity Manager</name>
+    <id>IdentityManager</id>
+    <author>JB</author>
+    <description>Identity display policy, per-context controls, and optional user titles for OSSN. Not affiliated with OSSN.</description>
+    <license>MIT</license>
+    <author_url>https://dev.gaggo.net</author_url>
+    <version>1.1</version>
+    <requires>
+        <type>ossn_version</type>
+        <version>8.9</version>
+    </requires>
+</component>

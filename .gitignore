@@ -1,0 +1,17 @@
+# Local/editor/system
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Packaging artifacts
+*.zip
+*.tar
+*.tgz
+
+# Do not publish local backup files created during edits
+*.bak.*
