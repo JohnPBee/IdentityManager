@@ -10,7 +10,7 @@
     </description>
     <license>MIT</license>
     <author_url>https://github.com/JohnPBee/IdentityManager</author_url>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <requires>
         <type>ossn_version</type>
         <version>8.9</version>

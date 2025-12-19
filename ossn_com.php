@@ -151,11 +151,14 @@ function jb_idm_apply_display(OssnUser $u) {
 
 	// Apply runtime display consistently (White theme topbar uses first_name)
 	$u->fullname   = $label;
-	$u->first_name = $label;
-	$u->last_name  = '';
 }
 
 function jb_idm_user_fetched_object_hook($hook, $type, $return, $params) {
+	// Guard: do not rewrite user display while editing/saving profile basics
+	if ((isset($_GET["section"]) && $_GET["section"] === "basic") || (isset($_REQUEST["action"]) && $_REQUEST["action"] === "user/edit")) {
+		return $return;
+	}
+
 	if ($return instanceof OssnUser) {
 		jb_idm_apply_display($return);
 	}
