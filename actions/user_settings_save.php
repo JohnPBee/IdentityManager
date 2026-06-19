@@ -28,18 +28,20 @@ if ($enabled !== 'on') {
         redirect(REF);
 }
 
-function idm_clean_mode($val) {
-        $val = trim((string)$val);
-        $allowed = array('', 'full_name', 'username', 'at_username'); // '' means inherit
-        return in_array($val, $allowed, true) ? $val : '';
+if (!function_exists('jb_idm_user_clean_mode')) {
+        function jb_idm_user_clean_mode($val) {
+                $val = trim((string)$val);
+                $allowed = array('', 'full_name', 'username', 'at_username'); // '' means inherit
+                return in_array($val, $allowed, true) ? $val : '';
+        }
 }
 
 $save = array(
-        'idm_mode_global'   => idm_clean_mode(input('idm_mode_global')),
-        'idm_mode_feed'     => idm_clean_mode(input('idm_mode_feed')),
-        'idm_mode_comments' => idm_clean_mode(input('idm_mode_comments')),
-        'idm_mode_profile'  => idm_clean_mode(input('idm_mode_profile')),
-        'idm_mode_userlist' => idm_clean_mode(input('idm_mode_userlist')),
+        'idm_mode_global'   => jb_idm_user_clean_mode(input('idm_mode_global')),
+        'idm_mode_feed'     => jb_idm_user_clean_mode(input('idm_mode_feed')),
+        'idm_mode_comments' => jb_idm_user_clean_mode(input('idm_mode_comments')),
+        'idm_mode_profile'  => jb_idm_user_clean_mode(input('idm_mode_profile')),
+        'idm_mode_userlist' => jb_idm_user_clean_mode(input('idm_mode_userlist')),
 );
 
 // Remove any existing pref annotations (enforce 1 row max)

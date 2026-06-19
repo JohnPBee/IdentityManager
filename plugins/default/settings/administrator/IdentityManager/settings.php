@@ -28,10 +28,10 @@ function jb_idm_admin_get_any($S, array $keys, $default = '') {
 // Canonical keys first, then legacy fallbacks
 $mode              = jb_idm_admin_get_any($S, array('mode', 'jb_idm_mode'), 'full_name');
 
-$ctx_feed          = jb_idm_admin_get_any($S, array('ctx_feed', 'jb_idm_ctx_feed'), 'off');
-$ctx_comments      = jb_idm_admin_get_any($S, array('ctx_comments', 'jb_idm_ctx_comments'), 'off');
-$ctx_profile       = jb_idm_admin_get_any($S, array('ctx_profile', 'jb_idm_ctx_profile'), 'off');
-$ctx_userlist      = jb_idm_admin_get_any($S, array('ctx_userlist', 'jb_idm_ctx_userlist'), 'off');
+$ctx_feed          = jb_idm_admin_get_any($S, array('ctx_feed', 'jb_idm_ctx_feed'), 'on');
+$ctx_comments      = jb_idm_admin_get_any($S, array('ctx_comments', 'jb_idm_ctx_comments'), 'on');
+$ctx_profile       = jb_idm_admin_get_any($S, array('ctx_profile', 'jb_idm_ctx_profile'), 'on');
+$ctx_userlist      = jb_idm_admin_get_any($S, array('ctx_userlist', 'jb_idm_ctx_userlist'), 'on');
 
 $exclude_admins    = jb_idm_admin_get_any($S, array('exclude_admins', 'jb_idm_exclude_admins'), 'off');
 $exclude_mods      = jb_idm_admin_get_any($S, array('exclude_moderators', 'jb_idm_exclude_moderators'), 'off');
@@ -56,7 +56,7 @@ $enable_user_overrides = jb_idm_admin_get_any($S, array('enable_user_overrides',
 		<div class="margin-top-10">
 			<label>User Overrides</label><br />
 			<input type="checkbox" name="jb_idm_enable_user_overrides" <?php if($enable_user_overrides == 'on' || $enable_user_overrides == '1') echo 'checked'; ?> />
-			Allow users to choose their own identity display mode (Profile → Edit)
+			Allow users to choose their own identity display mode (Profile -> Edit)
 		</div>
 
 

@@ -4,6 +4,12 @@ Runtime-only identity display overrides for **Open Source Social Network (OSSN)*
 
 This component lets the admin pick a global identity display mode and (optionally) allows users to choose a default + per-context overrides for how their name is shown across the site.
 
+## Compatibility
+
+- Tested migration target: OSSN Premium 9.9 / PHP 8.2.
+- Component metadata requires OSSN 9.9 or newer.
+- The component is runtime-only: it does not change OSSN core files or create custom database tables.
+
 ## Features
 
 - **Identity formats**
@@ -11,7 +17,7 @@ This component lets the admin pick a global identity display mode and (optionall
   - `username`
   - `at_username`
 
-- **Contexts (“places”)**
+- **Contexts ("places")**
   - `feed`
   - `comments`
   - `profile`
@@ -22,7 +28,7 @@ This component lets the admin pick a global identity display mode and (optionall
   1) Admin global default  
   2) If user overrides are enabled:
      - Per-context override (feed/comments/profile/userlist)
-     - User default (“global”)
+     - User default ("global")
   3) Fallback to admin default
 
 - **Runtime-only**
@@ -53,17 +59,17 @@ This component lets the admin pick a global identity display mode and (optionall
    - `.../ossn/components/IdentityManager/`
 
 2. In OSSN Admin panel:
-   - **Components** → enable **IdentityManager**
+   - **Components** -> enable **IdentityManager**
 
 3. Configure:
-   - **Administrator → Identity Manager**
+   - **Administrator -> Identity Manager**
    - Set default mode and enable/disable user overrides.
 
 ## User settings
 
 When enabled by admin:
 
-- Go to: **Profile → Edit → Identity Manager**
+- Go to: **Profile -> Edit -> Identity Manager**
 - Set:
   - **Default identity display preference** (used unless overridden)
   - Optional overrides for Feed, Comments, Profile, User lists
@@ -98,9 +104,16 @@ Fields (stored on annotation data):
 - If you see HTTP 500 after editing:
   - run `php -l` on component PHP files
   - check for duplicate function definitions
-- If user tab doesn’t appear:
-  - ensure admin enabled "Allow users to choose…"
-  - ensure you’re logged in and using Profile → Edit
+- If user tab doesn't appear:
+  - ensure admin enabled "Allow users to choose..."
+  - ensure you're logged in and using Profile -> Edit
+
+## OSSN 9.9 notes
+
+- Admin context checkboxes are honored by the runtime. By default, all supported contexts are enabled to preserve the original global display behavior.
+- Admin exclusions are honored for admins, moderators, and comma/space-separated usernames.
+- The white theme reads `first_name` in the topbar and latest-members widget, so runtime display updates both `fullname` and name parts while skipping basic profile edit/save requests.
+- Comment-specific context detection depends on the current OSSN page context. Some embedded comment displays may share the feed or profile context rather than a separate `comments` context.
 
 ## License
 

@@ -19,9 +19,14 @@ if (!ossn_isAdminLoggedin()) {
 
 // Accept current form field names (jb_idm_*) but store canonical component keys.
 $mode = input('jb_idm_mode');
-if (empty($mode)) {
-	$mode = 'full_name';
+if (!function_exists('jb_idm_action_clean_mode')) {
+	function jb_idm_action_clean_mode($mode) {
+		$mode = trim((string)$mode);
+		$allowed = array('full_name', 'username', 'at_username');
+		return in_array($mode, $allowed, true) ? $mode : 'full_name';
+	}
 }
+$mode = jb_idm_action_clean_mode($mode);
 
 $vars = array(
 // Canonical keys (new)
@@ -37,6 +42,7 @@ $vars = array(
 
     // Legacy mirror keys (old)
     'jb_idm_mode'               => $mode,
+    'jb_idm_enable_user_overrides' => input('jb_idm_enable_user_overrides') ? 'on' : 'off',
     'jb_idm_exclude_usernames'  => (string) input('jb_idm_exclude_usernames'),
     'jb_idm_exclude_admins'     => input('jb_idm_exclude_admins') ? 'on' : 'off',
     'jb_idm_exclude_moderators' => input('jb_idm_exclude_moderators') ? 'on' : 'off',
